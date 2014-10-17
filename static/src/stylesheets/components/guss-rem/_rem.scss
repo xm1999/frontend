@@ -1,6 +1,6 @@
 /**
  * Default rem baseline.
- * 
+ *
  * @type Number
  */
 $guss-rem-baseline: 10px !default;
@@ -18,8 +18,8 @@ $guss-rem-baseline: 10px !default;
 @function rem($value, $baseline: $guss-rem-baseline) {
     @if $value == 0 {
         @return 0; // 0rem -> 0
-    } 
-    
+    }
+
     @if type-of($value) == list {
         $result: ();
 
@@ -37,13 +37,14 @@ $guss-rem-baseline: 10px !default;
  * Output `rem` units with `px` fallback.
  *
  * @link http://sassmeister.com/gist/7451284 Usage
- * 
+ *
  * @param {Map} $properties
  *
  * @requires {function} rem
  */
 @mixin rem($properties) {
-    @each $property, $value in $properties {
+    @each $property in map-keys($properties) {
+        $value: map-get($properties, $property);
         @if (type-of($value) == number and $value != 0) {
             // Turn unitless values into pixels
             $value: if(unitless($value), $value * 1px, $value);

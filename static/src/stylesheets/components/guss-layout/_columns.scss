@@ -4,7 +4,7 @@
 
 /**
  * Minimum column width.
- * 
+ *
  * @type Number
  *
  * @group layout
@@ -13,7 +13,7 @@ $guss-column-min-width: 300px !default;
 
 /**
  * Column gutter.
- * 
+ *
  * @type Number
  *
  * @group layout
@@ -22,7 +22,7 @@ $guss-column-gap: 20px !default;
 
 /**
  * Column utility class.
- * 
+ *
  * @type String
  *
  * @group layout
@@ -33,7 +33,7 @@ $guss-columns-utility-class: '.l-columns';
  * When set to false, output a simpler version with a static width.
  *
  * @link http://caniuse.com/#feat=multicolumn Column support table
- * 
+ *
  * @type Bool
  *
  * @group layout
@@ -42,7 +42,7 @@ $browser-supports-columns: true !default;
 
 /**
  * Fallback width when CSS3 columns support is disabled.
- * 
+ *
  * @type Number
  *
  * @group layout
@@ -51,7 +51,7 @@ $guss-columns-fallback-width: 940px !default;
 
 /**
  * Number of columns in the non-responsive version.
- * 
+ *
  * @type Number
  *
  * @group layout
@@ -94,7 +94,7 @@ $guss-columns-fallback-columns: 3 !default;
  * @requires {mixin} mq
  *
  * @link http://sassmeister.com/gist/5c09ed0242085ba8d705 Examples on Sassmeister
- * 
+ *
  * @example
  *  // Usage 1: Sass mixin
  *  @include guss-columns('.classname');
@@ -179,7 +179,7 @@ $guss-columns-fallback-columns: 3 !default;
             @if type-of($columns-fallback-width) == map {
                 // Author has specified various fallbacks depending on the breakpoint.
                 // Note: breakpoints refer to names given to screen sizes in sass-mq
-                // 
+                //
                 // @include guss-columns(
                 //     (…)
                 //     $columns-fallback-width: (
@@ -191,7 +191,8 @@ $guss-columns-fallback-columns: 3 !default;
                 //         desktop: 3
                 //     )
                 // );
-                @each $breakpoint, $fallback-width in $columns-fallback-width {
+                @each $breakpoint in map-keys($columns-fallback-width) {
+                    $fallback-width: map-get($columns-fallback-width, $breakpoint);
 
                     $number-of-fallback-columns: if(type-of($columns-fallback-columns) == map, map-get($columns-fallback-columns, $breakpoint), $columns-fallback-columns);
 
@@ -213,7 +214,7 @@ $guss-columns-fallback-columns: 3 !default;
                 }
             } @else {
                 // Author specified a single fallback width, that applies to all breakpoints
-                // 
+                //
                 // @include guss-columns(
                 //     (…)
                 //     $columns-fallback-width: 290px,
