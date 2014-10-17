@@ -3,11 +3,12 @@ module.exports = function(grunt, options) {
 
     return {
         options: {
-            style: 'compressed',
-            sourcemap: options.isDev,
-            noCache: true,
-            quiet: options.isDev ? false : true,
-            bundleExec: true
+            outputStyle: 'compressed',
+            sourceMap: options.isDev,
+            includePaths: [sassDir]
+            // noCache: true,
+            // quiet: options.isDev ? false : true,
+            // bundleExec: true
         },
         compileStyleguide: {
             files: [{
