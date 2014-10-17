@@ -28,14 +28,16 @@ $breakpoints: (
             padding-left: $gs-gutter;
             padding-right: $gs-gutter;
         }
-        @each $breakpoint, $container-width in $breakpoints {
+        @each $breakpoint in map-keys($breakpoints) {
+            $container-width: map-get($breakpoints, $breakpoint);
             @include mq($breakpoint) {
                 width: $container-width;
             }
         }
     }
     .facia-container__inner--full-span {
-        @each $breakpoint, $container-width in $breakpoints {
+        @each $breakpoint in map-keys($breakpoints) {
+            $container-width: map-get($breakpoints, $breakpoint);
             @include mq($breakpoint) {
                 width: $container-width + ($gs-gutter * 2);
             }
