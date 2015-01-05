@@ -1,0 +1,24 @@
+@(env: String)
+
+@admin_main("General Information", env, isAuthed = true) {
+
+    <h1>General Information</h1>
+
+    <h2>Special Ad Sizes</h2>
+    <p>We have some special ad sizes that, if served, behave slightly differently</p>
+    <ul>
+        <li>
+            <h3>1x1</h3>
+            <p>Ad slot will collapse</p>
+        </li>
+        <li>
+            <h3>300x251</h3>
+            <p>Ad slot will be 'sticky', i.e. will stay fixed to the top of the viewport as the user scrolls</p>
+        </li>
+        <li>
+            <h3>300x1050</h3>
+            <p>If this ad size is served, the most popular component in the right-hand column will be removed</p>
+        </li>
+    </ul>
+
+}
