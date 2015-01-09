@@ -24,6 +24,8 @@ module.exports = function(grunt, options) {
                 omniture:     '../../public/javascripts/vendor/omniture',
                 socketio:     'components/socket.io-client/socket.io',
                 stripe:       '../../public/javascripts/vendor/stripe/stripe.min',
+                videojs:      'components/videojs/video',
+                videojsembed: 'components/videojs-embed/videojs.embed',
                 // plugins
                 text:         'components/requirejs-text/text'
             },
@@ -176,16 +178,6 @@ module.exports = function(grunt, options) {
             options: {
                 name: 'bootstraps/video-embed',
                 out: options.staticTargetDir + 'javascripts/bootstraps/video-embed.js',
-                paths: {
-                    qwery:        'components/qwery/qwery',
-                    common:       'projects/common',
-                    bean:         'components/bean/bean',
-                    bonzo:        'components/bonzo/bonzo',
-                    lodash:       'components/lodash-amd',
-                    videojs:      'components/videojs/video',
-                    videojsembed: 'components/videojs-embed/videojs.embed',
-                    text:         'components/requirejs-text/text'
-                },
                 shim: {
                     videojs: {
                         exports: 'videojs'
