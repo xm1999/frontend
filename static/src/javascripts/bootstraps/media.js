@@ -129,6 +129,7 @@ define([
                 player.one('Vpaid::AdStarted', events.vpaidStarted);
 
                 if (shouldAutoPlay(player)) {
+                    console.log('PLAYING');
                     player.play();
                 }
             }
@@ -212,7 +213,7 @@ define([
         var queryParams = {
             ad_rule:                 1,
             correlator:              new Date().getTime(),
-            //cust_params:             encodeURIComponent(urlUtils.constructQuery(buildPageTargeting())),
+            cust_params:             encodeURIComponent(urlUtils.constructQuery(buildPageTargeting())),
             env:                     'vp',
             gdfp_req:                1,
             impl:                    's',
@@ -463,12 +464,23 @@ define([
                             // Video analytics event.
                             player.trigger(constructEventName('preroll:request', player));
 
-                            player.ads({
-                                timeout: 3000
-                            });
-                            player.vast({
-                                url: getVastUrl()
-                            });
+//                            player.ads({
+//                                timeout: 3000
+//                            });
+//                            player.vast({
+//                                url: getVastUrl()
+//                            });
+
+
+                            require(['js!//imasdk.googleapis.com/js/sdkloader/ima3'])
+                                .then(function () {
+                                    player.ima({
+                                        id: mediaId,
+                                        adTagUrl: getVastUrl(),
+                                        nonLinearHeight: 394
+                                    });
+                                    player.ima.requestAds();
+                                });
                         } else {
                             bindContentEvents(player);
                         }
