@@ -211,6 +211,7 @@ define([
     }
 
     function getVastUrl() {
+        // jscs:disable requireCamelCaseOrUpperCaseIdentifiers
         var queryParams = {
             ad_rule:                 1,
             correlator:              new Date().getTime(),
@@ -251,6 +252,7 @@ define([
                     }
                 },
                 skip: function () {
+                    // jscs:disable disallowDanglingUnderscores
                     $('.js-ads-skip-overlay', this.el()).hide();
                     this.trigger(constructEventName('preroll:skip', this));
                     this.ima.onAdComplete_();
